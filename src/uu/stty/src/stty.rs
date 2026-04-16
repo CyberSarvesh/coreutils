@@ -645,6 +645,9 @@ fn print_terminal_size(
     let speed = nix::sys::termios::cfgetospeed(termios);
 
     let mut printer = WrappedPrinter::new(window_size);
+    //We have chosen to go with a platform independent approach due to issues caused in issue
+    //#11708 for ppc64le.
+
     let speed_val = speed as u32;
 
     let speed_str = BAUD_RATES
